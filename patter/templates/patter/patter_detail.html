@@ -1,0 +1,21 @@
+{% extends 'patter/base.html' %}
+
+{% block content %}
+<div class="content container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="patter">
+        <h2>{{ patter.patter_str }} : {{ patter.meaning_short_str }}</h2>
+        <h4>{{ patter.meaning_long_str }}</h4>
+        {% if patter.author %}
+          등록한 사람 : {{ patter.author }}<br>
+        {% endif %}
+        <div class="date">등록 날짜 : {{ patter.created_date }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <button type="button" class="btn btn-primary" onclick="history.back()">돌아가기</button>
+  </div>
+</div>
+{% endblock %}

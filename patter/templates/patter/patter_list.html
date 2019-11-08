@@ -1,31 +1,27 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Korean Language Translator</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/patter.css' %}">
-  </head>
-  <body>
-    <div class="page-header">
-      <h1><a href="">등록된 은어</a></h1>
-    </div>
+{% extends 'patter/base.html' %}
 
-    <div class="content container">
-      <div class="row">
-        <div class="col-md-8">
-          {% for patter in patters %}
-            <div class="patter">
-              <h2>{{ patter.patter_str }} : {{ patter.meaning_short_str }}<br></h2>
-              <h4>{{ patter.meaning_long_str }}</h4>
-              등록한 사람 : {{ patter.author }}<br>
-              등록 날짜 : {{ patter.created_date }}
-            </div>
-          {% endfor %}
+{% block content %}
+<div class="page-header">
+  <h1><a href="">등록된 은어</a></h1>
+</div>
+
+<div class="content container">
+  <div class="row">
+    <div class="col-md-8">
+      {% for patter in patters %}
+        <div class="patter">
+          <h2><a href="{% url 'patter_detail' pk=patter.pk %}">{{ patter.patter_str }} : {{ patter.meaning_short_str }}</a></h2>
+          <h4>
+            {% if patter.meaning_long_str|length > 46 %}
+              {{ patter.meaning_long_str|slice:":46" }}...
+            {% else %}
+              {{ patter.meaning_long_str }}
+            {% endif %}</h4>
+          등록한 사람 : {{ patter.author }}<br>
+          <div class="date">등록 날짜 : {{ patter.created_date }}</div>
         </div>
-      </div>
+      {% endfor %}
     </div>
-  </body>
-</html>
+  </div>
+</div>
+{% endblock %}
