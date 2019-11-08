@@ -6,7 +6,8 @@ from django.utils import timezone
 class Patter(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True)
     patter_str = models.CharField(max_length=200, primary_key=True)
-    meaning_str = models.TextField()
+    meaning_short_str = models.CharField(max_length=200, default='')
+    meaning_long_str = models.TextField(default='')
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

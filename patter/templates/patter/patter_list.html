@@ -18,7 +18,8 @@
         <div class="col-md-8">
           {% for patter in patters %}
             <div class="patter">
-              <h2>{{ patter.patter_str }} : {{ patter.meaning_str }}<br></h2>
+              <h2>{{ patter.patter_str }} : {{ patter.meaning_short_str }}<br></h2>
+              <h4>{{ patter.meaning_long_str }}</h4>
               등록한 사람 : {{ patter.author }}<br>
               등록 날짜 : {{ patter.created_date }}
             </div>
