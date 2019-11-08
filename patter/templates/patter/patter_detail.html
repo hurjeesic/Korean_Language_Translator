@@ -2,6 +2,8 @@
 
 {% block content %}
 <div class="page-header">
+  <a href="{% url 'patter_delete' pk=patter.pk %}" class="btn btn-default top-menu"><span class="glyphicon glyphicon-trash"></span></a>
+  <a href="{% url 'patter_edit' pk=patter.pk %}" class="btn btn-default top-menu"><span class="glyphicon glyphicon-pencil"></span></a>
   <h1>{{ patter.patter_str }}</h1>
 </div>
 
@@ -19,7 +21,7 @@
     </div>
   </div>
   <div class="bottom">
-    <button type="button" class="btn btn-primary" onclick="history.back()">돌아가기</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='{% url 'patter_list' %}'">돌아가기</button>
   </div>
 </div>
 {% endblock %}

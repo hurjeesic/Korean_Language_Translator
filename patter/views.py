@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Patter
 from .forms import PatterForm
@@ -18,6 +18,37 @@ def patter_detail(request, pk):
     return render(request, 'patter/patter_detail.html', { 'patter' : patter })
 
 def patter_new(request):
-    form  = PatterForm()
+    if request.method == "POST":
+        form = PatterForm(request.POST)
+        if form.is_valid():
+            patter = form.save(commit=False)
+            # patter.author = request.user
+            patter.save()
+
+            return redirect('patter_detail', pk=patter.pk)
+    else:
+        form = PatterForm()
 
     return render(request, 'patter/patter_edit.html', { 'form' : form })
+
+def patter_edit(request, pk):
+    patter = get_object_or_404(Patter, pk=pk)
+    if request.method == "POST":
+        form = PatterForm(request.POST, instance=patter)
+        if form.is_valid():
+            patter = form.save(commit=False)
+            patter.author = request.user
+            patter.save()
+
+            return redirect('patter_detail', pk=patter.pk)
+    else:
+        form = PatterForm(instance=patter)
+
+    return render(request, 'patter/patter_edit.html', { 'form' : form })
+
+def patter_delete(request, pk):
+    patter = get_object_or_404(Patter, pk=pk)
+
+    patter.delete()
+
+    return redirect('patter_list')
