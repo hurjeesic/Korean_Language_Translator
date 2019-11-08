@@ -6,10 +6,12 @@ translatorsite 프로젝트 시작 : django-admin.py startproject translatorsite
 사이트 구조 변경 : python manage.py migrate
 
 App 생성 : python manage.py startapp patter
-DB 생성(초기화) : python manage.py makemigrations patter
-사이트 구조 변경 : python manage.py migrate
+DB 구조 초기화 또는 변경 요청(맨 뒤에 patter 최초 생성 시에만 추가) : python manage.py makemigrations patter
+DB 구조 변경 실행 : python manage.py migrate
 
 사이트 슈퍼 계정 생성 : python manage.py createsuperuser
 
 자주 실행되는 명령어
 서버 실행 : python manage.py runserver
+DB 구조 초기화 또는 변경 요청 : python manage.py makemigrations
+DB 구조 변경 실행 : python manage.py migrate
