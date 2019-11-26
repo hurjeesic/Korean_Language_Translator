@@ -83,6 +83,24 @@ def translate_func(input):
     for patter in patters:
         output = output.replace(patter.patter_str, patter.meaning_short_str)
 
+    import os
+    path = "./patter/words/"
+    file_list = os.listdir(path)
+    already_word = ''
+    for file_name in file_list:
+        f = open(path + file_name, 'r', encoding='utf-8')
+        while True:
+            line = f.readline()
+            if not line: break
+            if len(line.split('\"')) > 2:
+                data = line.split(' ')[0]
+                meaning = line.split('\"')[1]
+                if data != already_word:
+                    already_word = data
+                    output = output.replace(data, meaning)
+
+        f.close()
+
     return output
 
 def help(request):
