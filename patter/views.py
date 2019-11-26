@@ -84,7 +84,7 @@ def translate_func(input):
         output = output.replace(patter.patter_str, patter.meaning_short_str)
 
     import os
-    path = "./patter/words/"
+    path = os.path.abspath('') + "/patter/words/"
     file_list = os.listdir(path)
     already_word = ''
     for file_name in file_list:
