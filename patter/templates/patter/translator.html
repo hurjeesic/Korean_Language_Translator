@@ -1,25 +1,32 @@
-{% extends 'patter/base.html' %}
 {% load static %}
 
-{% block header %}
-<style>
-  .noresize{
-    resize: none;
-  }
-</style>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  	<title>Learning</title>
+    <link rel="stylesheet" href="{% static 'css/Learning.css' %}">
+  </head>
+  <body>
+    <form method="GET">
+      <div>
+        <img src="{% static 'image/img1.png' %}" class="layer1">
+        <h1 class="Learning">Tranlating</h1>
+      </div>
+      <div class="mybox1">
+        <h1 id="text1">입력</h1>
+        <textarea class="content1" name="input" style="font-size:25px;" rows="10" cols="50" wrap="virtual" {% if input is None %}onclick="this.value=''"{% endif %}>{% if input is None %}내용을 입력해 주세요{% else %}{{ input }}{% endif %}</textarea>
+      </div>
+      <img src="{% static 'image/img5.png' %}" class="layer2">
+      <div class="mybox2">
+        <h1 id="text2">해석</h1>
+        <textarea class="content2" style="font-size:25px;" rows="10" cols="50" wrap="virtual" readonly >{{ output }}</textarea>
+      </div>
+      <div class="but">
+        <img style="cursor: pointer;" class="layer3" src="{% static 'image/img6.png' %}" onclick="location.href='{% url 'index' %}'">
 
-{% block content %}
-  <form method='get'>
-    <!--은어 입력 공간-->
-    <h1> 은어 입력 </h1>
-    <textarea name="input" cols="40" rows="10"  class="noresize"></textarea>
-
-    <!--뜻 변환 공간-->
-    <h1> 뜻 출력 </h1>
-    <textarea cols="40" rows="10" class="noresize">{{ output }}</textarea>
-
-    <input type = "submit" value = "변환"/>
-    <input type = "button" value = "이전 페이지" onclick = "location.href = '(첫페이지 주소)"/>
-  </form>
-{% endblock %}
+        <input type="submit" value="번역" class="save">
+      </div>
+    </form>
+  </body>
+</html>

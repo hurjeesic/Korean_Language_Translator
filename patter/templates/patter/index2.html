@@ -1,0 +1,21 @@
+{% extends 'patter/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="wrap">
+    <div class="page-header">
+      <center>은어 번역기</center>
+    </div>
+    <!-- https://ac-illust.com/ko/clip-art/758155/%EB%AA%A8%EB%A5%B4%EB%8A%94 -->
+    <img src="{% static 'image/background.jpeg' %}">
+
+    <div class="buttons">
+      {% if user.is_authenticated %}
+        <a href="{% url 'patter_list' %}">은어 목록</a>
+      {% endif %}
+      <a class="abc" href="{% url 'add' %}"><img src="{% static 'image/add.jpg' %}"></a>
+      <a class="abc" href="{% url 'translator' %}"><img src="{% static 'image/translator.jpg' %}"></a>
+      <a class="abc" href="{% url 'help' %}"><img src="{% static 'image/help.png' %}"></a>
+    </div>
+  </div>
+{% endblock %}

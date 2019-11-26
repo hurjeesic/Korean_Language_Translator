@@ -55,7 +55,15 @@ def patter_delete(request, pk):
 
 def patter_add(request):
     if request.method == "POST":
-        return redirect('index')
+        form = PatterForm(request.POST)
+        if form.is_valid():
+            patter = form.save(commit=False)
+            patter.author = None
+            patter.patter_str = request.POST.get('patter')
+            patter.meaning_short_str = request.POST.get('short_meaning')
+            patter.save()
+
+            return redirect('add')
 
     return render(request, 'patter/patter_add.html', {})
 
@@ -63,20 +71,17 @@ def translate(request):
     output = ''
     if request.method == "GET":
         input = request.GET.get("input");
-        if input is None:
-            input = ''
+        if input is not None:
+            output = translate_func(input)
 
-        output = translate_func(input)
 
-    return render(request, 'patter/translator.html', { 'output' : output })
+    return render(request, 'patter/translator.html', { 'input' : input, 'output' : output })
 
 def translate_func(input):
     output = input
     patters = Patter.objects.all()
     for patter in patters:
-        print(patter.patter_str, patter.meaning_short_str)
         output = output.replace(patter.patter_str, patter.meaning_short_str)
-        print(output)
 
     return output
 
