@@ -1,0 +1,23 @@
+{% extends 'patter/base.html' %}
+{% load static %}
+
+{% block content %}
+  <!--은어 입력 공간-->
+  <h1> 은어 입력 </h1>
+  <textarea cols="40" rows="10"  class="noresize">
+  </textarea>
+  <style>
+    .noresize{
+      resize: none;
+    }
+  </style>
+  <!--뜻 변환 공간-->
+  <h1> 뜻 출력 </h1>
+  <textarea cols="40" rows="10" class="noresize">
+  </textarea>
+
+  <form>
+    <input type = "button" value = "변환"/>
+    <input type = "button" value = "이전 페이지" onclick = "location.href = '(첫페이지 주소)"/>
+  </form>
+{% endblock %}

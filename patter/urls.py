@@ -7,5 +7,8 @@ urlpatterns = [
     path('patter/detail/<str:pk>/', views.patter_detail, name='patter_detail'),
     path('patter/new/', views.patter_new, name='patter_new'),
     path('patter/edit/<str:pk>/', views.patter_edit, name='patter_edit'),
-    path('patter/delete/<str:pk>/', views.patter_delete, name='patter_delete')
+    path('patter/delete/<str:pk>/', views.patter_delete, name='patter_delete'),
+    path('add/', views.patter_add, name="add"),
+    path('translator/', views.translate, name="translator"),
+    path('help/', views.help, name="help")
 ]

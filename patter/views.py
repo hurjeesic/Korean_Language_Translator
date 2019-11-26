@@ -52,3 +52,18 @@ def patter_delete(request, pk):
     patter.delete()
 
     return redirect('patter_list')
+
+def patter_add(request):
+    if request.method == "POST":
+        return redirect('index')
+
+    return render(request, 'patter/patter_add.html', {})
+
+def translate(request):
+    if request.method == "POST":
+        return redirect('translate')
+
+    return render(request, 'patter/translator.html', {})
+
+def help(request):    
+    return render(request, 'patter/help.html', {})
