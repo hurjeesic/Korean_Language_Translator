@@ -60,10 +60,25 @@ def patter_add(request):
     return render(request, 'patter/patter_add.html', {})
 
 def translate(request):
-    if request.method == "POST":
-        return redirect('translate')
+    output = ''
+    if request.method == "GET":
+        input = request.GET.get("input");
+        if input is None:
+            input = ''
 
-    return render(request, 'patter/translator.html', {})
+        output = translate_func(input)
 
-def help(request):    
+    return render(request, 'patter/translator.html', { 'output' : output })
+
+def translate_func(input):
+    output = input
+    patters = Patter.objects.all()
+    for patter in patters:
+        print(patter.patter_str, patter.meaning_short_str)
+        output = output.replace(patter.patter_str, patter.meaning_short_str)
+        print(output)
+
+    return output
+
+def help(request):
     return render(request, 'patter/help.html', {})
