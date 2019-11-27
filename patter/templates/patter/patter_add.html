@@ -15,12 +15,13 @@
       </div>
       <div class="mybox1">
         <h1 id="text1">은어 입력</h1>
-        <textarea class="content1" name="ta2" style="font-size:25px;" rows="10" cols="50" wrap="virtual" onclick="this.value=''">내용을 입력해 주세요</textarea>
+        <textarea class="content1" name="patter" style="font-size:25px;" rows="10" cols="50" wrap="virtual" onclick="this.value=''">내용을 입력해 주세요</textarea>
       </div>
       <img src="{% static 'image/img5.png' %}" class="layer2">
       <div class="mybox2">
         <h1 id="text2">해석 입력</h1>
-        <textarea class="content2" name="ta2" style="font-size:25px;" rows="10" cols="50" wrap="virtual" onclick="this.value=''">내용을 입력해 주세요</textarea>
+        <textarea class="content2" name="short_meaning" style="font-size:25px;" rows="10" cols="50" wrap="virtual" onclick="this.value=''">내용을 입력해 주세요</textarea>
+
       </div>
       <div class="but">
         <img style="cursor: pointer;" class="layer3" src="{% static 'image/img6.png' %}" onclick="location.href='{% url 'index' %}'">

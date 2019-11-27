@@ -84,7 +84,7 @@ def translate_func(input):
         output = output.replace(patter.patter_str, patter.meaning_short_str)
 
     import os
-    path = os.path.abspath('') + "/patter/words/"
+    path = os.path.abspath('') + "/Korean_Language_Translator/patter/words/"
     file_list = os.listdir(path)
     already_word = ''
     for file_name in file_list:
