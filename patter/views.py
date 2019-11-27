@@ -55,15 +55,10 @@ def patter_delete(request, pk):
 
 def patter_add(request):
     if request.method == "POST":
-        form = PatterForm(request.POST)
-        if form.is_valid():
-            patter = form.save(commit=False)
-            patter.author = None
-            patter.patter_str = request.POST.get('patter')
-            patter.meaning_short_str = request.POST.get('short_meaning')
-            patter.save()
+        patter = Patter(patter_str=request.POST.get('patter_str'), meaning_short_str=request.POST.get('meaning_short_str'))
+        patter .save()
 
-            return redirect('add')
+        return redirect('add')
 
     return render(request, 'patter/patter_add.html', {})
 

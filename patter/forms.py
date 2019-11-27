@@ -5,4 +5,4 @@ class PatterForm(forms.ModelForm):
 
     class Meta:
         model = Patter
-        fields = ('author', 'patter_str', 'meaning_short_str', 'meaning_long_str',)
+        fields = ('patter_str', 'meaning_short_str', 'meaning_long_str',)

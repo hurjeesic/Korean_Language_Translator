@@ -4,10 +4,9 @@ from django.utils import timezone
 
 # Create your models here.
 class Patter(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True)
     patter_str = models.CharField(max_length=200, primary_key=True)
     meaning_short_str = models.CharField(max_length=200, default='')
-    meaning_long_str = models.TextField(default='')
+    meaning_long_str = models.TextField(default='', null=True)
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
